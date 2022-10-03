@@ -9,7 +9,6 @@ def main():
     user_input = input("Please enter the expression you wish to calculate: ")
     while (user_input != "exit"):
         print(calculate(user_input))
-
         user_input = input("Please enter the expression you wish to calculate: ")
 
 #Takes a string and returns whether it is valid input to be calculated
@@ -20,11 +19,21 @@ def validate_input(expression):
     x = re.search('[^(0-9)+*-]+',expression)
     if type(x) != NoneType:
         error_out = "unexpected string character(s): " + x.group()
+
     #Duplicate operation
+    x = re.search('([-+*]{1}\*)',expression)
+    if type(x) != NoneType:
+        error_out = "duplicate operation: " + x.group()
 
     #Expression begins with operation
+    x = re.search('(^[-+*]{2}|\*)',expression)
+    if type(x) != NoneType:
+        error_out = "expression starts with operation: " + x.group()
 
     #Expression ends with operation
+    x = re.search('([-+*]{1}$)',expression)
+    if type(x) != NoneType:
+        error_out = "expression ends with operation: " + x.group()
 
     #Return
     if(error_out == "error: "):
