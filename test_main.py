@@ -1,10 +1,5 @@
-from app import hello_world, calculate
+from app import calculate
 
-def test_hello_world():
-    response = hello_world();
-    assert response == "Hello, World!"
-    
-    
 def test_with_all_three_operands():
     response = calculate("14+39-15*10+50");
     assert response == "-47"
