@@ -7,3 +7,7 @@ to run:
          pip3 install flask pytest
 
     run with flask --debug run
+
+to test:
+
+    pytest
