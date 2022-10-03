@@ -1,5 +1,6 @@
 Flask codebase for the Calculator assignment with:
 Diarmuid McGonagle, 19310779
+Alex Todeush, 20335062
 
 to run:
 
