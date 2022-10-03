@@ -15,7 +15,7 @@ def test_with_multiplication():
 # ERROR CHECKING
 def test_with_unexpected_string_char():
     response = calculate("87t23*53");
-    assert response == "error: unexpected string character: t"
+    assert response == "error: unexpected string character(s): t"
     
 def test_with_duplicated_operation():
     response = calculate("87+23**53");
