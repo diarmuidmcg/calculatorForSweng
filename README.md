@@ -6,4 +6,4 @@ to run:
     install all packages
          pip3 install flask pytest
 
-    run with flask --app main run
+    run with flask --debug run
