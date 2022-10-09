@@ -14,29 +14,37 @@ def main():
 #Takes a string and returns whether it is valid input to be calculated
 def validate_input(expression):
     error_out = "error: "
+    error_count = 0
     #Error States:
     #Unacceptable character (anything other than 0-9 or +-*)
     x = re.search('[^(0-9)+*-]+',expression)
     if type(x) != NoneType:
-        error_out = "unexpected string character(s): " + x.group()
+        error_out = error_out + "unexpected string character(s): " + x.group()
+        error_count += 1
 
     #Duplicate operation
     x = re.search('([-+*]{1}\*)',expression)
     if type(x) != NoneType:
-        error_out = "duplicate operation: " + x.group()
+        if(error_count > 1): error_count += ", "
+        error_out = error_out + "duplicate operation: " + x.group()
+        error_count += 1
 
     #Expression begins with operation
-    x = re.search('(^[-+*]{2}|\*)',expression)
+    x = re.search('(^([-+*]{2}|\*))',expression)
     if type(x) != NoneType:
-        error_out = "expression starts with operation: " + x.group()
+        if(error_count > 1): error_count += ", "
+        error_out = error_out + "expression starts with operation: " + x.group()
+        error_count += 1
 
     #Expression ends with operation
     x = re.search('([-+*]{1}$)',expression)
     if type(x) != NoneType:
-        error_out = "expression ends with operation: " + x.group()
+        if(error_count > 1): error_count += ", "
+        error_out = error_out + "expression ends with operation: " + x.group()
+        error_count += 1
 
     #Return
-    if(error_out == "error: "):
+    if(error_count == 0):
         return True
     else: return error_out
  
