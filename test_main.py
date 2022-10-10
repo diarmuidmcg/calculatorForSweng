@@ -19,4 +19,4 @@ def test_with_unexpected_string_char():
     
 def test_with_duplicated_operation():
     response = calculate("87+23**53");
-    assert response == "error: duplicate operation: *"
+    assert response == "error: duplicate operation: **"
