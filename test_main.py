@@ -1,10 +1,5 @@
-from app import hello_world, calculate
+from app import calculate
 
-def test_hello_world():
-    response = hello_world();
-    assert response == "Hello, World!"
-    
-    
 def test_with_all_three_operands():
     response = calculate("14+39-15*10+50");
     assert response == "-47"
@@ -20,7 +15,7 @@ def test_with_multiplication():
 # ERROR CHECKING
 def test_with_unexpected_string_char():
     response = calculate("87t23*53");
-    assert response == "error: unexpected string character: t"
+    assert response == "error: unexpected string character(s): t"
     
 def test_with_duplicated_operation():
     response = calculate("87+23**53");
